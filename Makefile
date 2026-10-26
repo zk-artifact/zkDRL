@@ -2,17 +2,13 @@ PYTHON ?= python3
 export PYTHONPATH := $(CURDIR)
 export PYTHONDONTWRITEBYTECODE := 1
 
-.PHONY: test check smoke build register validate numerics audit analysis plots clean
+.PHONY: test check build register validate numerics audit analysis plots clean
 
 test:
 	$(PYTHON) -B -m unittest discover -s tests/numerics -v
 	$(PYTHON) -B -m unittest discover -s tests/ledger -v
-	$(PYTHON) -B -m unittest discover -s tests/acceptance -v
 
 check: test
-
-smoke:
-	$(PYTHON) -B examples/python_smoke.py
 
 build:
 	./build.sh

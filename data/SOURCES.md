@@ -34,7 +34,7 @@ path compatibility, `python/legacy/data/`).
 
 ## Fixtures and secrecy
 
-Public salts, seeds and challenges in the shipped examples are test values, not
-confidential inputs. The paper's production privacy claims are explicitly
-limited; see `docs/CLAIMS.md`. Do not reuse the public fixture salts for a
+Public salts, seeds and challenges in the shipped fixtures are test values,
+not confidential inputs. The paper's production privacy claims are explicitly
+limited; see `README.md`. Do not reuse the public fixture salts for a
 deployment that expects witness privacy.

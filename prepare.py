@@ -50,7 +50,7 @@ def register():
  save(OUT/'program-identities.json',identities)
  scientific={}
  for p in sorted(ROOT.rglob('*')):
-  if p.is_file() and p.suffix in ('.py','.rs','.json','.toml','.lock','.sh') and not any(x in p.parts for x in ('target','payload','__pycache__','bin','cloud','reported-results','runs','dist','build','tmp','results','elf-control','elf-instrumented')):
+  if p.is_file() and p.suffix in ('.py','.rs','.json','.toml','.lock','.sh') and not any(x in p.parts for x in ('target','payload','__pycache__','bin','cloud','runs','dist','build','tmp','results','elf-control','elf-instrumented')):
    scientific[str(p.relative_to(ROOT))]=sha(p)
  save(OUT/'SOURCE_FREEZE.json',dict(status='frozen_before_challenge',files=scientific,
   numerical_source_sha256=hashlib.sha256(json.dumps(scientific,sort_keys=True).encode()).hexdigest()))

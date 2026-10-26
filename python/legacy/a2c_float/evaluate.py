@@ -85,5 +85,5 @@ class Evaluator:
 def parameters(kind):
     if kind=='browser':return np.zeros(4,dtype=np.float64)
     if kind!='recommendation':raise ValueError(kind)
-    with np.load(ROOT.parent/'data/recommendation.npz') as d:
+    with np.load(ROOT.parents[2]/'data/recommendation.npz') as d:
         return np.floor(np.asarray(d['rewards'][0],dtype=np.float64)*16)/16

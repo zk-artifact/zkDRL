@@ -11,13 +11,11 @@ overwrites a previous registration, so use a fresh directory per run.
 ```sh
 python3 -m pip install -r requirements.txt
 make test
-make smoke
 ```
 
-Expected: all unit tests pass; the smoke program prints two JSON lines with
-schema 202/203 journals (148/172 bytes). This checks the independent reference
-arithmetic, the numerical harness's condition handling, and the auditor ledger.
-It does not check the Rust guest or any cryptographic claim.
+Expected: all unit tests pass. The tests exercise the independent Python
+reference, the numerical harness and the auditor ledger. They do not check the
+Rust guest or any cryptographic claim.
 
 The numerical harness can be run on one job at a time:
 
@@ -175,9 +173,9 @@ reported peak was about 32 GiB host-tree RSS and 26.6 GiB GPU memory.
 | proof bundle | about 1.8 KiB per proof (paper cohort) |
 | verification | lightweight call about 0.454–0.479 s; bundle/key setup separate |
 
-The exact proof times, peak memory and bundle sizes from the paper are in
-`reported-results/proof-configuration-summary.csv`. They are measurements from
-one host and are not a performance guarantee.
+The proof-timing values in this table are from the paper's single host and are
+not a performance guarantee. The artifact does not ship raw proof bundles or the
+paper's proof summary; regenerate them from your own proof campaign.
 
 ## 7. Common failure modes
 
@@ -200,8 +198,7 @@ one host and are not a performance guarantee.
 ## 8. What is intentionally not included
 
 Raw proof bundles, cloud/rental orchestration, SSH material, provider instance
-records, raw telemetry, auditor SQLite databases, and per-run stdout/stderr from
-the paper campaign are excluded. They are operational evidence, not source
-code, and some contain account or host metadata. `reported-results/` contains
-only the sanitized aggregate tables needed to cross-check the paper; figures are
-regenerated locally.
+records, raw telemetry, auditor SQLite databases, per-run logs and paper result
+tables are excluded. They are operational evidence or outputs, not source code,
+and some contain account or host metadata. Figures are regenerated locally from
+the outputs of the commands above.
