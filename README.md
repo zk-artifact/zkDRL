@@ -169,8 +169,8 @@ the explicit non-claims are documented in `host/README.md` and
   `data/recommendation.npz`; provenance and licenses are in `data/SOURCES.md`.
 - `reported-results/` was copied from the accepted campaign and checked for
   paths, hostnames, instance IDs and credentials.
-- Run `bash scripts/check_anonymity.sh` for the automated text scan. The full
-  removal checklist and residual signals are in `ANONYMITY.md`.
+- The full removal checklist and residual signals are in `ANONYMITY.md`.
+  `bash scripts/check_manifest.sh` verifies the packaged file digests.
 
 If you find an identifying artifact, please report it through the anonymous
 review system.

@@ -27,18 +27,18 @@ following removals and normalizations.
 
 ## Checks
 
+A local pre-publication scan checked text files, hidden paths, the sanitized
+`reported-results/` tables, the NPZ payload and the archive structure. The
+packaging/anonymity checker is not part of the scientific artifact and is
+intentionally not shipped. Verify the copied file digests with:
+
 ```sh
-bash scripts/check_anonymity.sh
+bash scripts/check_manifest.sh
 ```
 
-The script scans text files for absolute workspace paths, development campaign
-labels, email addresses, provider credentials, SSH material, GPU/instance IDs
-and author/institution phrases. It scans hidden files and previously ignored
-paths, and includes `reported-results/` text files. It excludes Cargo lockfiles
-and binary fixtures from the text scan; those were reviewed separately. No PDFs
-or compiled binaries are shipped; the small NPZ data fixture is scanned with
-`strings`. The package script uses a fixed timestamp and sorted
-entries, so the archive itself does not carry the original file mtimes.
+No PDFs or compiled binaries are shipped; the small NPZ data fixture was
+reviewed separately. The distributed ZIP, when produced, uses normalized
+timestamps and sorted entries.
 
 ## Known residual signals
 
