@@ -1,0 +1,42 @@
+{
+  "E": 281474976710656,
+  "O0": "8193 values T[k]=floor(exp(-k/256)*E); q=-x; k,r=divmod(q,256); floor(((256-r)*T[k]+r*T[k+1])/256); final knot T[8192]",
+  "O1": "2049 values T[k]=floor(exp(-k/64)*E); q=-x; k,r=divmod(q,1024); floor(((1024-r)*T[k]+r*T[k+1])/1024); final knot T[2048]",
+  "O2": "j=floor((x+32*Q)/8192); c_q16=-32*Q+j*8192+4096; t_q16=x-c_q16; a[k]=floor(exp(c_q16/Q)*E/k!), k=0..3; h=a3; h=floor(h*t_q16/Q)+a2; h=floor(h*t_q16/Q)+a1; h=floor(h*t_q16/Q)+a0; no clamp",
+  "P": 4294967296,
+  "Q": 65536,
+  "bounds": {
+    "actions": "1 <= A <= 65536",
+    "draw": "0 <= draw < 2^32",
+    "exp_x": "-2^63 <= x_q16 <= 0",
+    "logits": "abs(z) < 1024*2^16 (including masked entries)",
+    "mass": "0 <= m <= 2^32 (33 bits unsigned)"
+  },
+  "categorical": "first index with draw < cumulative mass; equality right",
+  "generation": {
+    "O0_all_entries_equal_baseline": true,
+    "all_entries_equal": true,
+    "baseline_sha256": "39786b3a4a9ffc46842ae90d55beedaba84f1156cfd365e7eeb8b3f43b0f348d",
+    "caveat": "Independent precision recomputation agrees; not a formal transcendental rounding certificate. Frozen integers define semantics.",
+    "decimal_precisions": [
+      80,
+      120
+    ]
+  },
+  "schema": "suite018-operators-v1",
+  "shared_exp": "x<-32*Q:0; x=0:E; x=-32*Q included; no clamp",
+  "softmax": "valid-only max, exp, sum, remainders; invalid mass 0; at least one valid; n_i=P*w_i; m_i=floor(n_i/sum(w)); allocate P-sum(m) by descending n_i%sum(w), ascending original index",
+  "static_width_bounds": {
+    "LUT_numerator_abs": "<= 2^58 (O0), <= 2^60 (O1)",
+    "O2_horner": "|t|<=4096; each coefficient<=E; recurrence |h|<=E+|h_previous|/16+1 implies |h|<2E, |h*t|<2^61",
+    "conclusion": "All these intermediates fit signed i128; exp helper intermediates fit signed int64. Python scalar uses unbounded ints.",
+    "mass_numerator": "<2^81 using conservative weight<2E",
+    "sum_weights": "<=2^65 using conservative weight<2E and A<=2^16"
+  },
+  "table_sha256": {
+    "O0": "39786b3a4a9ffc46842ae90d55beedaba84f1156cfd365e7eeb8b3f43b0f348d",
+    "O1": "c5a3ca2660f52bb9d7ba065e3578ffb9490f04cc99d7c529d7930a0693bdcdc5",
+    "O2": "3458e92f8ffab83b5d11567343aa17daaf8a8ff613bf45942cd86655b406ad3e"
+  },
+  "types": "Python int only; bool rejected; vectors list/tuple; mask integer 0/1"
+}

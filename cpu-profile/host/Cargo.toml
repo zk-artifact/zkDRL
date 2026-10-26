@@ -1,0 +1,19 @@
+[package]
+name = "zkdrl-profile-host"
+version = "0.1.0"
+edition = "2021"
+[workspace]
+[features]
+markers = ["zkdrl-profile-dqn-common/markers"]
+[dependencies]
+anyhow = "1"
+bincode = "1.3.3"
+hex = "0.4"
+serde_json = "1"
+sha2 = "=0.10.8"
+sp1-sdk = { version = "=6.9.0", default-features = false, features = ["profiling"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+zkdrl-profile-dqn-common = { path = "../common" }
+[profile.release]
+opt-level = 3
+overflow-checks = false

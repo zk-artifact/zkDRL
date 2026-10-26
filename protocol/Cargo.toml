@@ -1,0 +1,16 @@
+[package]
+name = "zkdrl-ctc-protocol"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dev-dependencies]
+sha2 = "=0.10.8"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+overflow-checks = false

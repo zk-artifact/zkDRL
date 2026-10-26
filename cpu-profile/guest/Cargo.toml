@@ -1,0 +1,18 @@
+[package]
+name = "zkdrl-profile-dqn-guest"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+sp1-zkvm = "=6.9.0"
+zkdrl-profile-dqn-common = { path = "../common" }
+sha2 = "=0.10.8"
+
+[features]
+default = []
+markers = ["zkdrl-profile-dqn-common/markers"]
+h32 = ["zkdrl-profile-dqn-common/h32"]
+h64 = ["zkdrl-profile-dqn-common/h64"]
+c128 = ["zkdrl-profile-dqn-common/c128"]
+c256 = ["zkdrl-profile-dqn-common/c256"]

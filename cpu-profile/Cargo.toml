@@ -1,0 +1,14 @@
+[workspace]
+members = ["common", "guest"]
+exclude = ["host"]
+resolver = "2"
+
+[patch.crates-io]
+# Exact commit locked by the old patch-sha2-0.10.8-sp1-6.2.0 guest.
+sha2 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", rev = "75b15faa7ce44d25435d0a3209285455540f0b7f" }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+overflow-checks = false

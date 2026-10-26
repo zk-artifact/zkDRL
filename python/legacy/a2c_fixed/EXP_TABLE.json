@@ -1,0 +1,12 @@
+{
+  "schema": "zkrl-a2c-fixed-exp-table-v1",
+  "entries": 8193,
+  "argument": "-k/256, k=0..8192",
+  "scale": 281474976710656,
+  "stored_rounding": "floor",
+  "generation_decimal_precision": 80,
+  "independent_decimal_precision": 120,
+  "all_entries_equal": true,
+  "caveat": "Two arbitrary-precision computations agree; not a formal transcendental rounding certificate. The frozen integers, not an ideal exp function, define program semantics.",
+  "sha256": "39786b3a4a9ffc46842ae90d55beedaba84f1156cfd365e7eeb8b3f43b0f348d"
+}
